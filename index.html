@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegressionX | Data Visualizer</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- External Libs -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.min.js"></script>
+    <!-- Styles & Scripts -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i data-lucide="trending-up" class="logo-icon"></i>
+                <h2>RegressionX</h2>
+            </div>
+
+            <div class="control-group">
+                <h3><i data-lucide="database"></i> Dataset</h3>
+                <label for="csv-upload" class="upload-btn">
+                    <i data-lucide="upload-cloud"></i> Upload CSV
+                </label>
+                <input type="file" id="csv-upload" accept=".csv" />
+                <div class="file-name" id="file-name-display">No file selected</div>
+            </div>
+            
+            <div class="control-group" id="variable-selection" style="display: none;">
+                <h3><i data-lucide="sliders-horizontal"></i> Variables</h3>
+                
+                <div class="input-wrapper">
+                    <label for="target-var">Target Variable (Y):</label>
+                    <select id="target-var"></select>
+                </div>
+                
+                <div class="input-wrapper">
+                    <label>Independent Variables (X):</label>
+                    <div id="independent-vars-container" class="checkbox-group"></div>
+                </div>
+            </div>
+
+            <div class="control-group" id="model-controls" style="display: none;">
+                <h3><i data-lucide="settings"></i> Manual Tweak</h3>
+                <div id="sliders-container"></div>
+                <button id="reset-btn" class="secondary-btn"><i data-lucide="rotate-ccw"></i> Reset to OLS Fit</button>
+            </div>
+
+            <div class="metrics-container" id="metrics-panel" style="display: none;">
+                <div class="metric-card">
+                    <span class="metric-label">R² Score</span>
+                    <span class="metric-value" id="r2-score">-</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">MSE</span>
+                    <span class="metric-value" id="mse-score">-</span>
+                </div>
+                <div class="equation-box" id="equation-display"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="empty-state" id="empty-state">
+                <i data-lucide="bar-chart-2" style="width:64px;height:64px;margin-bottom:1rem;opacity:0.5;"></i>
+                <h2>Upload a dataset to begin</h2>
+                <p>Upload a CSV file containing numerical columns for regression analysis.</p>
+            </div>
+
+            <div class="charts-grid" id="charts-grid" style="display: none;">
+                <div class="chart-card main-chart">
+                    <div class="chart-header">
+                        <h3>Prediction Fit</h3>
+                        <div class="chart-actions">
+                            <button id="toggle-3d" class="icon-btn" title="Toggle 3D Plot (if 2 Independent Vars)" style="display:none;"><i data-lucide="box"></i></button>
+                        </div>
+                    </div>
+                    <div id="plot-main" class="plot-container"></div>
+                </div>
+                <div class="chart-card secondary-chart">
+                    <div class="chart-header">
+                        <h3>Residuals</h3>
+                    </div>
+                    <div id="plot-residuals" class="plot-container"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

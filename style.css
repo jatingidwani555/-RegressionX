@@ -1,0 +1,318 @@
+:root {
+    --bg-dark: #0f172a;
+    --bg-panel: #1e293b;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-glow: rgba(59, 130, 246, 0.4);
+    --danger: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background-color: var(--bg-panel);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
+.logo h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.control-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.control-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Upload Button */
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.upload-btn:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Inputs & Selects */
+.input-wrapper {
+    margin-bottom: 1rem;
+}
+
+.input-wrapper label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+}
+
+select {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 6px;
+    outline: none;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* Sliders */
+.slider-container {
+    margin-bottom: 1rem;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.slider-val {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* Metrics */
+.metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.metric-card {
+    background: linear-gradient(145deg, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: var(--accent);
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 0.25rem;
+}
+
+.equation-box {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border: 1px dashed var(--border-color);
+    word-break: break-all;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+.empty-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.chart-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chart-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--text-main);
+    background: rgba(255,255,255,0.1);
+}
+
+.plot-container {
+    flex: 1;
+    width: 100%;
+    min-height: 200px;
+}
+
+/* Plotly dark theme overrides */
+.js-plotly-plot .plotly .main-svg {
+    background-color: transparent !important;
+}
